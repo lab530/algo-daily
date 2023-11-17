@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"e:\\CODE\\code\\CF\\CF908\\A.cpp","tests":[{"id":1699370812694,"input":"7\n5\nABBAA\n3\nBBB\n7\nBBAAABA\n20\nAAAAAAAABBBAABBBBBAB\n1\nA\n13\nAAAABABBABBAB\n7\nBBBAAAA","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CODE\\code\\CF\\CF908\\A.cpp","group":"local","local":true}
