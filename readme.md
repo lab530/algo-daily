@@ -1,8 +1,8 @@
 # algo-daily
 
-# 交题
+## 终端
 
-## fork 仓库
+### fork 仓库
 
 ![image](https://github.com/lab530/algo-daily/assets/114394519/f11132a6-5291-418d-b798-bd5642f5f0b1)
 
@@ -14,7 +14,7 @@
 git clone [fork 的仓库]
 ```
 
-## 提交代码
+### 提交代码
 
 查看仓库修改
 
@@ -28,6 +28,13 @@ git commit -m "your_name: 提提交信息"
 git push
 ```
 
-## 提交 pr
+### 提交 pr
 
 ![image](https://github.com/lab530/algo-daily/assets/114394519/67a9e33f-ecea-4f0d-b052-a22d21581155)
+
+## GitHub Desktop
+
+1. 同上，fork 一份到自己的用户下
+2. 在 GH Desktop 里 clone 你自己的 algo-daily 仓库
+3. 创建分支（不建也可以）
+4. 每天写代码打 commit 然后 push，完成了到网页上发 pr
