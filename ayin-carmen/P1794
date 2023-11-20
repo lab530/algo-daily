@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main() {
+	int v, g;
+	int n;
+	cin >> v >> g;
+	cin >> n;
+	
+	int t[n + 1], ve[n + 1], ge[n + 1];
+	fill(t, t + n + 1, 0);
+	fill(ve, ve + n + 1, 0);
+	fill(ge, ge + n + 1, 0);
+	
+	for (int i = 1; i <= n; i++) {
+		cin >> t[i] >> ve[i] >> ge[i];
+	}
+	
+	int ayin[v + 1][g + 1];
+	fill(&ayin[0][0], &ayin[0][0] + (v + 1) * (g + 1), 0);
+	
+	for (int z = 1; z <= n; z++) {
+		for (int i = v; i >= ve[z]; i--) {
+			for (int j = g; j >= ge[z]; j--) {
+					ayin[i][j] = max(ayin[i][j], ayin[i - ve[z]][j - ge[z]] + t[z]);
+			}
+		}
+	}
+	cout << ayin[v][g] << endl;
+}
