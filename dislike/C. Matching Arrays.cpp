@@ -1,10 +1,9 @@
 // 排序、二分
-// #include <bits/stdc++.h>
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
+
 using namespace std;
 typedef long long ll; 
+
 int search(vector<pair<int, int>>& vt, int target) {
     int left = 0, right = vt.size() - 1; 
     while(left <= right) {
@@ -55,6 +54,7 @@ int main() {
 
 // 结构体、排序
 // #include <bits/stdc++.h>
+
 // using namespace std; 
 
 // struct beauty {
