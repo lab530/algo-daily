@@ -51,3 +51,60 @@ int main() {
     }
     return 0; 
 }
+
+// 结构体、排序
+// #include <bits/stdc++.h>
+// using namespace std; 
+
+// struct beauty {
+// 	int a; 
+// 	int b; 
+// 	int id; 
+// } nums[1000010]; 
+
+// struct rule_a {
+// 	bool operator() (const beauty& x, const beauty& y) {
+// 		return x.a > y.a; 
+// 	}
+// };
+
+// struct rule_id {
+// 	bool operator() (const beauty& x, const beauty& y) {
+// 		return x.id < y.id; 
+// 	}
+// };
+
+// void solve() {
+// 	int n, x; cin >> n >> x; 
+// 	for(int i = 0; i < n; ++i) {
+// 		cin >> nums[i].a; 
+// 		nums[i].id = i; 
+// 	}
+// 	sort(nums, nums + n, rule_a()); 
+// 	vector<int> nums_b(n); 
+// 	for(int& m: nums_b) cin >> m; 
+// 	sort(nums_b.begin(), nums_b.end()); 
+// 	sort(nums_b.begin(), nums_b.begin() + x, greater<int>()); 
+// 	sort(nums_b.begin() + x, nums_b.end(), greater<int>()); 
+// 	bool sign = true; 
+// 	for(int i = 0; i < n; ++i) {
+// 		if(i < x && nums[i].a <= nums_b[i] || i >= x && nums[i].a > nums_b[i]) sign = false; 
+// 		nums[i].b = nums_b[i]; 
+// 	}
+// 	if(!sign) cout << "NO" << endl; 
+//     else {
+//         cout << "YES" << endl; 
+// 		sort(nums, nums + n, rule_id()); 
+// 		for(int i = 0; i < n; ++i) cout << nums[i].b << ' '; 
+//         cout << endl; 
+//     }
+// 	return; 
+// }
+
+// int main() {
+// 	int t; cin >> t; 
+// 	while(t--) {
+// 		solve(); 
+// 	}
+// 	return 0; 
+// }
