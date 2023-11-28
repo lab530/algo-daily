@@ -1,3 +1,4 @@
+// 排序、二分
 // #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
