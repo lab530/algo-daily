@@ -53,7 +53,6 @@ void solve() {
         cout << endl; 
     }
 } 
-
 int main() {
     int t; cin >> t; 
     while(t--) {
