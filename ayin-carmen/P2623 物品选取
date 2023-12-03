@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <cstdio>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+int n, m, op;
+int dp[2010];
+int a, b, c;
+
+int main()
+{
+    cin >> n >> m;
+    if(m == 0)
+    {
+    	cout << 0;
+    	return 0;
+	}
+	for(int i = 1; i <= n; i++)
+	{
+		scanf("%d", &op);
+		if(op == 1)
+		{
+			scanf("%d %d", &a, &b);
+			for(int j = m; j >= 0; j--)
+				for(int k = 1; k <= j; k++)
+					dp[j] = max(dp[j], dp[j - k] + k * k * a - b * k);
+		}
+		if(op == 2)
+		{
+			scanf("%d %d %d", &a, &b, &c);
+			for(int j = m; j >= b; j--)
+				for(int k = 1; k <= min(c, j / b); k++)
+					dp[j] = max(dp[j], dp[j - k * b] + k * a);
+		}
+		if(op == 3)
+		{
+			scanf("%d %d", &a, &b);
+			for(int j = b; j <= m; j++)
+				dp[j] = max(dp[j], dp[j - b] + a);
+		}
+	}
+	
+	cout << dp[m];
+	
+    return 0;
+}

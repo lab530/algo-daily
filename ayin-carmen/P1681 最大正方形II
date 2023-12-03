@@ -1,0 +1,124 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <math.h>
+using namespace std;
+
+int n, m;
+int ayin[1502][1502];
+
+int carmen_1(int a)
+{
+	if(a == 1)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+// 判断在位置 (i, j) 处是否可以形成边长为 t 的正方形
+int carmen(int t, int i, int j)
+{
+	int z = 0;
+	int p = 0;
+	int ti = 0;
+	int pi = 0;
+	// 检查从 i 到 i - t 的列
+	if(ayin[i][j] == 0)
+	{
+		ti = 1;
+		pi = 1;
+	}
+	for (z = i; z >= i - t; z--)
+	{
+		if (ayin[z][j] == ti)
+		{
+			break;
+		}
+		ti = carmen_1(ti);
+	}
+	// 检查从 j 到 j - t 的行
+	for (p = j; p >= j - t; p--)
+	{
+		if (ayin[i][p] == pi)
+		{
+			break;
+		}
+		pi = carmen_1(pi);
+	}
+	t = min(i - z, j - p);
+	if(ayin[i][p] == pi||ayin[z][j] == ti)
+	{
+		return t;
+	}
+	return -1;
+}
+
+int main()
+{
+	cin >> n >> m;
+	int hob[n + 1][m + 1];
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= m; j++)
+		{
+			cin >> ayin[i][j];
+		}
+	}
+	// 将 ayin 数组的第一行和第一列初始化为 0
+	for (int i = 0; i <= n; i++)
+	{
+		ayin[i][0] = 0;
+	}
+	for (int i = 0; i <= m; i++)
+	{
+		ayin[0][i] = 0;
+	}
+	// 将 hob 数组初始化为 0
+	for (int i = 0; i <= n; i++)
+	{
+		for (int j = 0; j <= m; j++)
+		{
+			hob[i][j] = 0;
+		}
+	}
+	
+	int ans = 0;
+	
+	// 遍历矩阵中的每个位置
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= m; j++)
+		{
+			// 获取上一个位置的边长
+			int t = hob[i - 1][j - 1];
+			// 如果在当前位置 (i, j) 处无法形成边长为 t+1 的正方形
+			if (carmen(t, i, j) == -1)
+			{
+				// 在 hob 数组中记录边长为 t+1 的正方形
+				hob[i][j] = hob[i - 1][j - 1] + 1;
+				// 更新最大边长
+				ans = max(ans, hob[i][j]);
+			}
+			else
+			{
+				// 如果无法形成正方形，则边长为 0
+				hob[i][j] = carmen(t, i, j);
+				ans = max(ans, hob[i][j]);
+			}
+		}
+	}
+	/*for(int i=0;i<=n;i++)
+	  {
+	  for(int j=0;j<=m;j++)
+	  {
+	  cout << hob[i][j] << " ";
+	  }
+	  cout << endl;
+	}*/
+	cout << ans ;
+}
