@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+ 
+int main() {
+        int t;
+        cin >> t;
+        while (t--) {
+        string a = "abcdefgh";
+        vector<int> num(8, 1);
+        for (int i = 1; i < 8; ++i) {
+            num[i] = num[i - 1] + 1;
+        }
+ 
+        char first;
+        cin >> first;
+        int second;
+        cin >> second;
+ 
+        for (int i = 0; i < 8; ++i) {
+            if (second != num[i]) {
+                cout << first << num[i] <<endl;
+            }
+        }
+ 
+        for (int i = 0; i < 8; ++i) {
+            if (first != a[i]) {
+                cout << a[i] << second <<endl;
+            }
+        }
+    }
+    return 0;
+}
