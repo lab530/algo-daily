@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int ayin[101];
+int hob[101][101];
+int n, x, y;
+int main()
+{
+	cin >> n;
+	for(int i=1;i<=100;i++)
+	{
+		for(int j=1;j<=100;j++)
+		{
+			if(i==j)
+			{
+				hob[i][j]=0;
+			}
+			else
+			{
+				hob[i][j]=9999999;
+			}
+		}
+	}
+	
+	for(int i = 1; i <= n; i++)
+	{
+		cin >> ayin[i] >> x >> y;
+		if(x > 0)
+		{
+			hob[i][x] = 1;
+			hob[x][i] = 1;
+		}
+		if(y > 0)
+		{
+			hob[i][y] = 1;
+			hob[y][i] = 1;
+		}
+	}
+	
+	for(int k=1;k<=n;k++)//用Floyed求任意两结点之间的最短路径
+	{
+		for(int i=1;i<=n;i++)
+		{
+			if(i!=k)
+			{
+				for(int j=1;j<=n;j++)
+				{
+					if(i!=j&&k!=j&&hob[i][k]+hob[k][j]<hob[i][j])
+						hob[i][j]=hob[i][k]+hob[k][j];
+				}
+			}
+		}
+	}
+	
+	int min=0x7fffffff;
+	for(int i=1; i<=n; i++)////穷举医院建在n个节点，找出最短距离。  
+	{
+		int total=0;//将初始数据清零 
+		for(int j=1; j<=n; j++) {
+			total+=hob[i][j]*ayin[j];
+		}
+		if(total<min) min=total;//如果有更小的值将那就将更小的值替换掉 
+	}
+	cout<<min<<endl;
+}
